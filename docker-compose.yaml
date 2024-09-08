@@ -1,0 +1,18 @@
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpMyAdmin
+    restart: unless-stopped
+    ports:
+      - '8084:80'
+    environment:
+      PMA_HOST: <MySQL-Database-Host>
+      PMA_PORT: 3306
+      PMA_PASSWORD: <Your-MySQL-Password>
+    networks:
+      - webnet-network
+
+networks:
+  webnet-network:
+    external: true      
+      
