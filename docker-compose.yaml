@@ -1,18 +1,21 @@
+version: '3.8'  # Docker Compose file format version
+
 services:
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpMyAdmin
-    restart: unless-stopped
+    image: phpmyadmin/phpmyadmin  # Use the official phpMyAdmin image
+    container_name: phpMyAdmin  # Name of the container
+    restart: unless-stopped  # Restart policy
     ports:
-      - '8084:80'
+      - '8084:80'  # Map host port 8084 to container port 80
     environment:
-      PMA_HOST: <MySQL-Database-Host>
-      PMA_PORT: 3306
-      PMA_PASSWORD: <Your-MySQL-Password>
+      PMA_HOST: MySQL-Database  # MySQL container hostname or network alias
+      PMA_PORT: 3306  # MySQL port number
+      PMA_PASSWORD: <Your-MySQL-Password>  # MySQL root user password
     networks:
-      - webnet-network
+      - webnet-network  # Network to connect to
 
 networks:
   webnet-network:
-    external: true      
+    external: true  # Use an existing external network
+  
       
